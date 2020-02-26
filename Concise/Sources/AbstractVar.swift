@@ -9,7 +9,10 @@
 import Foundation
 
 open class AbstractVar {
+    private static var nextId: Int64 = 1
+
     public let domain: Domain
+    internal(set) public var varId: Int64
     internal(set) public var needsUpdate: Bool = false
     internal(set) public var updatingValue: Bool = false
     private var subscriptions: [WeakSubscription] = []
@@ -28,6 +31,7 @@ open class AbstractVar {
     
     public init(_ domain: Domain) {
         self.domain = domain
+        self.varId = OSAtomicIncrement64(&Self.nextId)
     }
     
     internal func notifyChanged() {

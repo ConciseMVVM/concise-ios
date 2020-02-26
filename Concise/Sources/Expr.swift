@@ -23,21 +23,58 @@ public class Expr<VarType: Equatable>: Var<VarType> {
         deinit {
             subscription.dispose()
         }
+        
+        static func asDictionary(_ dependencies: [Dependency]) -> [Int64: Dependency] {
+            var dict: [Int64: Dependency] = [:]
+            
+            for dep in dependencies {
+                dict[dep.observable.varId] = dep
+            }
+            
+            return dict
+        }
     }
     
     private let expr: () -> VarType
-    private var dependencies: [Dependency] = []
+    private var dependencies: [Int64: Dependency] = [:]
+    
+    private func updateDependencies(_ vars: [AbstractVar]) {
+        var newVars: [Int64: AbstractVar] = [:]
+        
+        for v in vars {
+            newVars[v.varId] = v
+        }
+        
+        // first add any new Dependencies...
+        
+        for v in newVars.values {
+            if dependencies[v.varId] == nil {
+                dependencies[v.varId] = Dependency(expr: self, observable: v)
+            }
+        }
+        
+        // now remove deleted dependencies...
+        
+        for d in dependencies.values {
+            if newVars[d.observable.varId] == nil {
+                dependencies.removeValue(forKey: d.observable.varId)
+            }
+        }
+    }
     
     override public func updateValue() -> Bool {
         let dep = DependencyGroup()
         let newValue = dep.capture(self.expr)
         
+        // update dependencies even if expression result doesn't change!
+        
+        updateDependencies(dep.dependencies)
+
         if newValue == self.value {
             return false // nothing to do
         }
 
         self.setValue(newValue)
-        self.dependencies = dep.dependencies.map { return Dependency(expr: self, observable: $0) }
         
         return true
     }
@@ -48,7 +85,8 @@ public class Expr<VarType: Equatable>: Var<VarType> {
         let initialValue = dep.capture(expr)
         
         super.init(Domain.current, initialValue)
-        self.dependencies = dep.dependencies.map { return Dependency(expr: self, observable: $0) }
+        
+        self.dependencies = Dependency.asDictionary(dep.dependencies.map { return Dependency(expr: self, observable: $0) })
     }
 }
 
