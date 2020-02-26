@@ -23,10 +23,13 @@ public class MutableVar<VarType: Equatable>: Var<VarType> {
         guard let futureValue = _futureValue else {
             return false // weird
         }
-        
-        setValue(futureValue)
         _futureValue = nil
         
+        guard futureValue != self.value else {
+            return false
+        }
+
+        setValue(futureValue)
         return true
     }
     
