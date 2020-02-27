@@ -9,7 +9,7 @@
 import Foundation
 
 open class ConciseArray<Element>: AbstractVar {
-    private(set) var items: [Element]
+    private(set) public var items: [Element]
 
     private var _oldItems: [Element]?
     private var _changes: [ConciseArrayChange]?
