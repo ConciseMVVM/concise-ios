@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ConciseArray<Element>: AbstractVar {
+open class ConciseArray<Element>: AbstractVar {
     private(set) var items: [Element]
 
     private var _oldItems: [Element]?
