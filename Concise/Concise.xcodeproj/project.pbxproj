@@ -21,6 +21,10 @@
 		E53966E223FCBBCB00F59ED5 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53966E123FCBBCB00F59ED5 /* PropertyWrappers.swift */; };
 		E59F4A642400955400A622DA /* MutableVarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F4A632400955400A622DA /* MutableVarTests.swift */; };
 		E59F4A6624009A9B00A622DA /* ExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F4A6524009A9B00A622DA /* ExprTests.swift */; };
+		E5FF1B3F2408601400EA3056 /* ConciseArrayChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B3E2408601400EA3056 /* ConciseArrayChange.swift */; };
+		E5FF1B412408608500EA3056 /* ConciseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B402408608500EA3056 /* ConciseArray.swift */; };
+		E5FF1B43240860A800EA3056 /* MutableConciseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B42240860A800EA3056 /* MutableConciseArray.swift */; };
+		E5FF1B45240860D200EA3056 /* MapConciseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B44240860D200EA3056 /* MapConciseArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		E53966E123FCBBCB00F59ED5 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
 		E59F4A632400955400A622DA /* MutableVarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableVarTests.swift; sourceTree = "<group>"; };
 		E59F4A6524009A9B00A622DA /* ExprTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExprTests.swift; sourceTree = "<group>"; };
+		E5FF1B3E2408601400EA3056 /* ConciseArrayChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciseArrayChange.swift; sourceTree = "<group>"; };
+		E5FF1B402408608500EA3056 /* ConciseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciseArray.swift; sourceTree = "<group>"; };
+		E5FF1B42240860A800EA3056 /* MutableConciseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableConciseArray.swift; sourceTree = "<group>"; };
+		E5FF1B44240860D200EA3056 /* MapConciseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConciseArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 		E539669923FC5AAD00F59ED5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E5FF1B3D24085FEA00EA3056 /* ConciseArray */,
 				E53966C923FC5F5A00F59ED5 /* AbstractVar.swift */,
 				E53966CF23FC621C00F59ED5 /* DependencyGroup.swift */,
 				E53966CB23FC5FA200F59ED5 /* Domain.swift */,
@@ -117,6 +126,17 @@
 				E59F4A6524009A9B00A622DA /* ExprTests.swift */,
 			);
 			path = ConciseTests;
+			sourceTree = "<group>";
+		};
+		E5FF1B3D24085FEA00EA3056 /* ConciseArray */ = {
+			isa = PBXGroup;
+			children = (
+				E5FF1B3E2408601400EA3056 /* ConciseArrayChange.swift */,
+				E5FF1B402408608500EA3056 /* ConciseArray.swift */,
+				E5FF1B42240860A800EA3056 /* MutableConciseArray.swift */,
+				E5FF1B44240860D200EA3056 /* MapConciseArray.swift */,
+			);
+			path = ConciseArray;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,13 +252,17 @@
 				E53966D423FC95DE00F59ED5 /* SubscriptionImpl.swift in Sources */,
 				E53966CE23FC606700F59ED5 /* Subscription.swift in Sources */,
 				E53966DA23FCABAD00F59ED5 /* Expr.swift in Sources */,
+				E5FF1B3F2408601400EA3056 /* ConciseArrayChange.swift in Sources */,
 				E53966E023FCBA2B00F59ED5 /* ExternalVar.swift in Sources */,
+				E5FF1B412408608500EA3056 /* ConciseArray.swift in Sources */,
 				E53966CA23FC5F5A00F59ED5 /* AbstractVar.swift in Sources */,
 				E53966CC23FC5FA200F59ED5 /* Domain.swift in Sources */,
+				E5FF1B45240860D200EA3056 /* MapConciseArray.swift in Sources */,
 				E53966DC23FCB64D00F59ED5 /* MutableVar.swift in Sources */,
 				E53966D823FCAAE400F59ED5 /* Var.swift in Sources */,
 				E53966DE23FCB8E400F59ED5 /* VarDate.swift in Sources */,
 				E53966E223FCBBCB00F59ED5 /* PropertyWrappers.swift in Sources */,
+				E5FF1B43240860A800EA3056 /* MutableConciseArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -370,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

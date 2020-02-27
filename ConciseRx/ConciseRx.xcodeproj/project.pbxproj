@@ -13,6 +13,7 @@
 		E539676C23FCFB1700F59ED5 /* DisposeBagExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539676B23FCFB1700F59ED5 /* DisposeBagExtensions.swift */; };
 		E539677023FCFC8200F59ED5 /* BindOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539676F23FCFC8200F59ED5 /* BindOperator.swift */; };
 		E59F4AB42404D20700A622DA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59F4AB32404D20700A622DA /* RxSwift.framework */; };
+		E5FF1B47240863E000EA3056 /* Dispose.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B46240863E000EA3056 /* Dispose.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E539676F23FCFC8200F59ED5 /* BindOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindOperator.swift; sourceTree = "<group>"; };
 		E59F4A9C2404863900A622DA /* Concise.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Concise.xcodeproj; path = ../../Concise/Concise.xcodeproj; sourceTree = "<group>"; };
 		E59F4AB32404D20700A622DA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		E5FF1B46240863E000EA3056 /* Dispose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispose.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				E539676B23FCFB1700F59ED5 /* DisposeBagExtensions.swift */,
 				E539676523FCFAB900F59ED5 /* ObservableExtensions.swift */,
 				E539676F23FCFC8200F59ED5 /* BindOperator.swift */,
+				E5FF1B46240863E000EA3056 /* Dispose.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				E539676C23FCFB1700F59ED5 /* DisposeBagExtensions.swift in Sources */,
 				E539676623FCFAB900F59ED5 /* ObservableExtensions.swift in Sources */,
 				E539677023FCFC8200F59ED5 /* BindOperator.swift in Sources */,
+				E5FF1B47240863E000EA3056 /* Dispose.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -414,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
