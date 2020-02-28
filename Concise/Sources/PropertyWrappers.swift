@@ -21,7 +21,7 @@ public protocol AbstractVarPropertyWrapper {
 }
 
 @propertyWrapper
-public class ExprProp<VarType> where VarType: Equatable {
+public struct ExprProp<VarType> where VarType: Equatable {
     public var expr: Expr<VarType>?
     
     public var wrappedValue: VarType {
@@ -49,7 +49,7 @@ extension ExprProp: AbstractVarPropertyWrapper {
 }
 
 @propertyWrapper
-public class MutableProp<VarType: Equatable> {
+public struct MutableProp<VarType: Equatable> {
     public let mutable: MutableVar<VarType>
     
     public var wrappedValue: VarType {
@@ -67,3 +67,43 @@ public class MutableProp<VarType: Equatable> {
 extension MutableProp: AbstractVarPropertyWrapper {
     public var abstractVar: AbstractVar? { return self.mutable }
 }
+
+@propertyWrapper
+public struct ArrayProp<Element> {
+    public var array: ConciseArray<Element>!
+    
+    public var wrappedValue: [Element] { array.items }
+    public var projectedValue: ConciseArray<Element> { array }
+    
+    public init() {
+    }
+}
+
+extension ArrayProp: AbstractVarPropertyWrapper {
+    public var abstractVar: AbstractVar? { return self.array }
+}
+
+public func *= <Element>(lhs: inout ArrayProp<Element>, rhs: ConciseArray<Element>) {
+    lhs.array = rhs
+}
+
+@propertyWrapper
+public struct MutableArrayProp<Element: Equatable> {
+    private var array: MutableConciseArray<Element>
+    
+    public var wrappedValue: [Element] {
+        get { return array.items }
+        set { array.futureItems = newValue }
+    }
+    
+    public var projectedValue: MutableConciseArray<Element> { array }
+    
+    public init(_ items: [Element] = []) {
+        self.array = MutableConciseArray(items)
+    }
+}
+
+extension MutableArrayProp: AbstractVarPropertyWrapper {
+    public var abstractVar: AbstractVar? { return self.array }
+}
+
