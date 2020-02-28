@@ -9,16 +9,21 @@
 import Foundation
 
 open class ConciseArray<Element>: AbstractVar {
-    private(set) public var items: [Element]
-
+    private var _items: [Element]
     private var _oldItems: [Element]?
     private var _changes: [ConciseArrayChange]?
-    
+
+    public var items: [Element] {
+        domain.willRead(self)
+        return _items
+    }
+
+    // these are only guaranteed to be valid during subscription callbacks...
     public var oldItems: [Element] { _oldItems ?? items }
     public var changes: [ConciseArrayChange] { _changes ?? [] }
     
     public init(domain: Domain, items: [Element]) {
-        self.items = items
+        self._items = items
         
         super.init(domain)
     }
@@ -29,7 +34,7 @@ open class ConciseArray<Element>: AbstractVar {
         }
         
         self._oldItems = self.items
-        self.items = newItems
+        self._items = newItems
         self._changes = changes // if nil, will be calculated the first time they are requested.
         
         // Once we are done with this update, we clear _oldItems and _changes...
