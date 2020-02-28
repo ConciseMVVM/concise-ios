@@ -50,7 +50,7 @@ fileprivate class ViewModelPublisher {
     }
 }
 
-public class ViewModel: ObservableObject {
+open class ViewModel: ObservableObject {
     private var pub: ViewModelPublisher? = nil
     
     public var objectWillChange: ObservableObjectPublisher {
@@ -62,7 +62,7 @@ public class ViewModel: ObservableObject {
     }
 }
 
-public class ViewModelItem<Model>: ObservableObject {
+open class ViewModelItem<Model>: ObservableObject {
     private var pub: ViewModelPublisher? = nil
     
     public var objectWillChange: ObservableObjectPublisher {
