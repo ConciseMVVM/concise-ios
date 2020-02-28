@@ -60,9 +60,12 @@ open class ViewModel: ObservableObject {
         
         return pub!.publisher
     }
+    
+    public init() {
+    }
 }
 
-open class ViewModelItem<Model>: ObservableObject {
+open class ViewModelItem: ObservableObject {
     private var pub: ViewModelPublisher? = nil
     
     public var objectWillChange: ObservableObjectPublisher {
@@ -73,7 +76,7 @@ open class ViewModelItem<Model>: ObservableObject {
         return pub!.publisher
     }
     
-    public required init(_ model: Model) {
+    public init() {
     }
 }
 
