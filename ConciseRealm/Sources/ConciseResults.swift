@@ -13,21 +13,6 @@ import RealmSwift
 
 import Concise
 
-extension RealmCollectionChange where CollectionType: Collection  {
-    public func asConciseArrayChanges() -> [ConciseArrayChange] {
-        switch self {
-        case .initial(let items):
-            return Array(0..<items.count).map { ConciseArrayChange.insert(offset: $0) }
-            
-        case .update(_, let deletions, let insertions, _):
-            return insertions.map { ConciseArrayChange.insert(offset: $0) }
-                + deletions.map { ConciseArrayChange.remove(offset: $0) }
-        default:
-            return []
-        }
-    }
-}
-
 extension Results {
     private class ObservableResultsArray<Element: RealmCollectionValue>: ConciseArray<Element> {
         private var notificationToken: NotificationToken?
@@ -39,7 +24,19 @@ extension Results {
             super.init(domain: Domain.current, items: (preload) ? Array(results) : [])
             notificationToken = results.observe { [weak self] (change) in
                 self?._futureItems = Array(results)
-                self?._futureChanges = change.asConciseArrayChanges()
+                self?._futureChanges = {
+                    switch(change) {
+                    case .initial(let items):
+                        // if we preloaded the "initial" call is redundant...
+                        return (preload) ? [] : Array(0..<items.count).map { ConciseArrayChange.insert(offset: $0) }
+                    case .update(_, let deletions, let insertions, _):
+                        return insertions.map { ConciseArrayChange.insert(offset: $0) }
+                            + deletions.map { ConciseArrayChange.remove(offset: $0) }
+                    default:
+                        return []
+                    }
+                }()
+                change.asConciseArrayChanges()
                 self?.setNeedsUpdate()
             }
         }
