@@ -14,7 +14,7 @@ import RealmSwift
 import Concise
 
 extension RealmCollectionChange where CollectionType: Collection  {
-    func asConciseArrayChanges() -> [ConciseArrayChange] {
+    public func asConciseArrayChanges() -> [ConciseArrayChange] {
         switch self {
         case .initial(let items):
             return Array(0..<items.count).map { ConciseArrayChange.insert(offset: $0) }
@@ -35,8 +35,8 @@ extension Results {
         private var _futureItems: [Element]?
         private var _futureChanges: [ConciseArrayChange]?
         
-        init(_ results: Results<Element>) {
-            super.init(domain: Domain.current, items: [])
+        init(_ results: Results<Element>, preload: Bool) {
+            super.init(domain: Domain.current, items: (preload) ? Array(results) : [])
             notificationToken = results.observe { [weak self] (change) in
                 self?._futureItems = Array(results)
                 self?._futureChanges = change.asConciseArrayChanges()
@@ -63,7 +63,10 @@ extension Results {
         }
     }
     
-    public func asConciseArray() -> ConciseArray<Element> {
-        return ObservableResultsArray(self)
+    
+    /// returns results ad an observable concise array
+    /// - Parameter preload: if true, the concise array  synchronously gets the inital value of the query. Otherwise the initial array will be empty and results will be queried on a background thread. (default: false)
+    public func asConciseArray(preload: Bool = false) -> ConciseArray<Element> {
+        return ObservableResultsArray(self, preload: preload)
     }
 }
