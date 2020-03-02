@@ -36,7 +36,6 @@ extension Results {
                         return []
                     }
                 }()
-                change.asConciseArrayChanges()
                 self?.setNeedsUpdate()
             }
         }
