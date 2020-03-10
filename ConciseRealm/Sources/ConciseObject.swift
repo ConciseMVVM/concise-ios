@@ -36,7 +36,7 @@ open class ConciseObject: Object {
         return v
     }()
     
-    override public static func ignoredProperties() -> [String] {
+    override open class func ignoredProperties() -> [String] {
         return ["conciseVar", "_token"]
     }
     
