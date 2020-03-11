@@ -83,14 +83,12 @@ extension ConciseObject {
     }
     
     private static func swizzleClass(_ target: ConciseObject.Type) {
-        print ("swizzleClass for \(target)")
         
         guard let schema = target.sharedSchema() else {
             fatalError()
         }
         
         for property in schema.properties {
-            print("    property: \(property.name)")
             swizzleProperty(target, property)
         }
     }

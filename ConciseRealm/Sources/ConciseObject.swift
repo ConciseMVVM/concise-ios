@@ -20,16 +20,11 @@ open class ConciseObject: Object {
         }
         
         let v = ExternalVar(Domain.current)
-        
-        print("started tracking changes for a \(type(of: self).className())")
 
         _token = self.observe { (change) in
-            print("\(type(of: self).className()) change: \(change)")
             guard !self.isInvalidated else {
-                print("\(type(of: self).className()) invalidated")
                 return // don't trigger an update, this object is now invalid!
             }
-            print("\(type(of: self).className()) changed")
             v.setNeedsUpdate() // a change of some kind has happened
         }
         
@@ -45,7 +40,6 @@ open class ConciseObject: Object {
             return // we only support the main thread for now.
             
         }
-        print("\(type(of: self).className()).willReadProperty(\"\(property)\")")
         
         guard DependencyGroup.current != nil else {
             return // if we aren't capturing dependencies, there is no need to continue.
