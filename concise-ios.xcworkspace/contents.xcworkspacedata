@@ -13,4 +13,7 @@
    <FileRef
       location = "group:ConciseRealm/ConciseRealm.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:ConciseActions/ConciseActions.xcodeproj">
+   </FileRef>
 </Workspace>

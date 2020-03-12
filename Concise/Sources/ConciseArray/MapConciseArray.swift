@@ -21,7 +21,6 @@ private class MapConciseArray<SourceElement, Element>: ConciseArray<Element> {
         super.init(domain: source.domain, items: initialItems)
         
         self.subscription = source.subscribe { [weak self] in
-            print("MapConciseArray.subsciption: source.changes = \(source.changes)")
             self?._futureSourceItems = source.items
             self?._futureChanges = source.changes
             self?.setNeedsUpdate()
@@ -36,8 +35,6 @@ private class MapConciseArray<SourceElement, Element>: ConciseArray<Element> {
     
         _futureSourceItems = nil
         _futureChanges = nil
-        
-        print("MapConciseArray.updateValue: changes = \(changes)")
         
         if changes.isEmpty {
             return false // nothing actually changed

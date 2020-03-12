@@ -19,6 +19,7 @@
 		E53966DE23FCB8E400F59ED5 /* VarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53966DD23FCB8E400F59ED5 /* VarDate.swift */; };
 		E53966E023FCBA2B00F59ED5 /* ExternalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53966DF23FCBA2B00F59ED5 /* ExternalVar.swift */; };
 		E53966E223FCBBCB00F59ED5 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53966E123FCBBCB00F59ED5 /* PropertyWrappers.swift */; };
+		E568396624155A1A000F511C /* VarIsConnected.swift in Sources */ = {isa = PBXBuildFile; fileRef = E568396524155A1A000F511C /* VarIsConnected.swift */; };
 		E59F4A642400955400A622DA /* MutableVarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F4A632400955400A622DA /* MutableVarTests.swift */; };
 		E59F4A6624009A9B00A622DA /* ExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F4A6524009A9B00A622DA /* ExprTests.swift */; };
 		E5FF1B3F2408601400EA3056 /* ConciseArrayChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B3E2408601400EA3056 /* ConciseArrayChange.swift */; };
@@ -56,6 +57,7 @@
 		E53966DD23FCB8E400F59ED5 /* VarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarDate.swift; sourceTree = "<group>"; };
 		E53966DF23FCBA2B00F59ED5 /* ExternalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalVar.swift; sourceTree = "<group>"; };
 		E53966E123FCBBCB00F59ED5 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
+		E568396524155A1A000F511C /* VarIsConnected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarIsConnected.swift; sourceTree = "<group>"; };
 		E59F4A632400955400A622DA /* MutableVarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableVarTests.swift; sourceTree = "<group>"; };
 		E59F4A6524009A9B00A622DA /* ExprTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExprTests.swift; sourceTree = "<group>"; };
 		E5FF1B3E2408601400EA3056 /* ConciseArrayChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciseArrayChange.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		E539669923FC5AAD00F59ED5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E5683964241559F8000F511C /* Vars */,
 				E53966C923FC5F5A00F59ED5 /* AbstractVar.swift */,
 				E5FF1B4F2409873100EA3056 /* Bindable.swift */,
 				E5FF1B4C2409865B00EA3056 /* CombineSupport.swift */,
@@ -121,7 +124,6 @@
 				E53966CD23FC606700F59ED5 /* Subscription.swift */,
 				E53966D323FC95DE00F59ED5 /* SubscriptionImpl.swift */,
 				E53966D723FCAAE400F59ED5 /* Var.swift */,
-				E53966DD23FCB8E400F59ED5 /* VarDate.swift */,
 				E5FF1B5124098C2000EA3056 /* ViewModel.swift */,
 			);
 			path = Sources;
@@ -135,6 +137,15 @@
 				E59F4A6524009A9B00A622DA /* ExprTests.swift */,
 			);
 			path = ConciseTests;
+			sourceTree = "<group>";
+		};
+		E5683964241559F8000F511C /* Vars */ = {
+			isa = PBXGroup;
+			children = (
+				E53966DD23FCB8E400F59ED5 /* VarDate.swift */,
+				E568396524155A1A000F511C /* VarIsConnected.swift */,
+			);
+			path = Vars;
 			sourceTree = "<group>";
 		};
 		E5FF1B3D24085FEA00EA3056 /* ConciseArray */ = {
@@ -274,6 +285,7 @@
 				E53966D823FCAAE400F59ED5 /* Var.swift in Sources */,
 				E53966DE23FCB8E400F59ED5 /* VarDate.swift in Sources */,
 				E53966E223FCBBCB00F59ED5 /* PropertyWrappers.swift in Sources */,
+				E568396624155A1A000F511C /* VarIsConnected.swift in Sources */,
 				E5FF1B43240860A800EA3056 /* MutableConciseArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
