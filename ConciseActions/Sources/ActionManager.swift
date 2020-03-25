@@ -26,7 +26,7 @@ public class ActionManager {
     
     //MARK: Action Processor
     
-    @ArrayProp private(set) public var actionRefs: [ActionRef]
+    @ArrayProp private var actionRefs: [ActionRef]
     private var _actions: [String:Action] = [:]
     
     private var _subscription: Subscription? = nil
