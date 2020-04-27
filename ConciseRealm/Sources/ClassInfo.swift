@@ -58,13 +58,15 @@ internal struct ClassInfo : CustomStringConvertible, Equatable {
         var all: [ClassInfo] = []
         
         var count: UInt32 = 0
-        let classList = objc_copyClassList(&count)!
-        
-        for i in 0..<Int(count) {
-            if let classInfo = ClassInfo(classList[i]) {
-                all.append(classInfo)
-            }
+        guard let classListPointer = objc_copyClassList(&count) else {
+            return all
         }
+
+        let unsafeBufferPointer = UnsafeBufferPointer(start: classListPointer, count: Int(count))
+
+        let classInfos: [ClassInfo] = unsafeBufferPointer.flatMap(ClassInfo.init) // ClassInfo.init is an optional!
+
+        all.append(contentsOf: classInfos)
         
         return all
     }
