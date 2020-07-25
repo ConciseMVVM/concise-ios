@@ -40,5 +40,5 @@ There is lots to be done! If you are interested in contributing, please let us k
 - **CocoaPods & Swift Package Manager Integration.** 
 - **Threading support.** Concise currently only supports the main thread. Supporting multiple threads involves binding each AbstractVar to a single thread
   (with an associated `Domain` for each thread) and creating a *proxy* class that can safely move values between threads.
-  - **UIKit Bindings.** Currently, you can use RX to bind values to UIKit properties, but it would be nice to have a framework that offers native support for this use case.
-  - **Android/Kotlin port.** The Core Library (Concise) should be pretty portable to Kotlin.
+- **UIKit Bindings.** Currently, you can use RX to bind values to UIKit properties, but it would be nice to have a framework that offers native support for this use case.
+- **Android/Kotlin port.** The Core Library (Concise) should be pretty portable to Kotlin.
