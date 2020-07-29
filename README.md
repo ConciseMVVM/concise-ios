@@ -21,14 +21,14 @@ Concise consists of a core library (**Concise**) and several optional integratio
 
 Concise MVVM supports [Carthage](https://github.com/Carthage/Carthage) for package management. Add the following to your `Cartfile`` file:
 
-    github "https://github.com/ConciseMVVM/concise-ios.git"
+    github "ConciseMVVM/concise-ios"
 
 After building you will have the following frameworks in `Carthage/Build/iOS` :
 
 - **Concise.framework** - This is the core Concise library. It has no dependencies, except for those built into Swift/iOS (Foundation with some integrations requiring Combine, SwiftUI and Network)
-- **ConciseRx** - Integration with Reactive Extensions. Requires **Concise.framework** and **ReactiveX/RxSwift**
-- **ConciseRealm** - Integration with Realm.  Requires  **Concise.framework** and **realm/realm-cocoa**
-- **ConciseActions** - Suppoort for dirable mutations. Requires **Concise.framework**, **ConciseRealm.framework** and **realm/realm-cocoa**
+- **ConciseRx.framework** - Integration with Reactive Extensions. Requires **Concise.framework** and **ReactiveX/RxSwift**
+- **ConciseRealm.framework** - Integration with Realm.  Requires  **Concise.framework** and **realm/realm-cocoa**
+- **ConciseActions.framework** - Suppoort for dirable mutations. Requires **Concise.framework**, **ConciseRealm.framework** and **realm/realm-cocoa**
 
 Integrate these as you would any other Carthage framework.
 
