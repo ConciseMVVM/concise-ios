@@ -15,6 +15,7 @@
 		E59F4AB72404D22700A622DA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59F4AB52404D22700A622DA /* RealmSwift.framework */; };
 		E59F4AB82404D22700A622DA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59F4AB62404D22700A622DA /* Realm.framework */; };
 		E5FF1B4A2408655900EA3056 /* ConciseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B492408655900EA3056 /* ConciseResults.swift */; };
+		F039406B24D354EA003F5BA9 /* ConciseLinkingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039406A24D354EA003F5BA9 /* ConciseLinkingObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E59F4AB52404D22700A622DA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E59F4AB62404D22700A622DA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E5FF1B492408655900EA3056 /* ConciseResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciseResults.swift; sourceTree = "<group>"; };
+		F039406A24D354EA003F5BA9 /* ConciseLinkingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciseLinkingObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				E53967AF23FD04E200F59ED5 /* ConciseObject+Swizzle.swift */,
 				E5FF1B492408655900EA3056 /* ConciseResults.swift */,
 				E58F92C8241A979C007AF3FF /* WithRealm.swift */,
+				F039406A24D354EA003F5BA9 /* ConciseLinkingObjects.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				E53967B023FD04E200F59ED5 /* ConciseObject+Swizzle.swift in Sources */,
 				E5FF1B4A2408655900EA3056 /* ConciseResults.swift in Sources */,
 				E58F92C9241A979C007AF3FF /* WithRealm.swift in Sources */,
+				F039406B24D354EA003F5BA9 /* ConciseLinkingObjects.swift in Sources */,
 				E53967AD23FD044A00F59ED5 /* ConciseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
