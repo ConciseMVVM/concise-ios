@@ -55,5 +55,7 @@ extension ConciseArray: RandomAccessCollection {
     public var startIndex: Int { items.startIndex }
     
     public var endIndex: Int { items.endIndex }
+    
+    public var count: Int { items.count }
 }
 

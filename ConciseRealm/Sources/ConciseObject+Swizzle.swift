@@ -13,8 +13,6 @@ import Concise
 
 extension ConciseObject {
     
-    // swizzling code (setup)
-    
     private static func getSwizzledImp(type: RLMPropertyType, existingImp: IMP, injectBlock: @escaping (_ obj: ConciseObject) -> Void) -> IMP {
         switch(type) {
         case .int:
@@ -71,32 +69,28 @@ extension ConciseObject {
             print("unable to get existing imp")
             return
         }
-
+        
         let propertyName = property.name
+        
+        
+//        let className = class_getName(target)
+//        print("swizzling \(String(cString: className)).\(propertyName)")
+        
         
         let swizzledImp = getSwizzledImp(type: property.optional ? .object : property.type, existingImp: existingImp) {
             $0.willReadProperty(propertyName)
         }
         
         class_replaceMethod(target, selector, swizzledImp, method_getTypeEncoding(originalMethod))
-
     }
     
-    private static func swizzleClass(_ target: ConciseObject.Type) {
-        
+    internal static func swizzleClass(_ target: ConciseObject.Type) {
         guard let schema = target.sharedSchema() else {
             fatalError()
         }
         
         for property in schema.properties {
             swizzleProperty(target, property)
-        }
-    }
-    
-    public static func setup() {
-        // for now this needs to be called on startup
-        ClassInfo.all.filter({ $0.classNameFull.starts(with: "RLM:") && $0.hasSuperclass(ConciseObject.self) }).forEach {
-            swizzleClass($0.classObject as! ConciseObject.Type)
         }
     }
 }
