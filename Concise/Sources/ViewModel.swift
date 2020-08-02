@@ -9,6 +9,33 @@
 import Foundation
 import Combine
 
+/// a View that supports data binding with the bind(to:) call, such as a UITableViewCell
+public protocol ConciseBindableView {
+    associatedtype Element
+    
+    func bind(to element: Element)
+}
+
+/// a ViewModelItem that has an associated ConciseBindableView, such as a view model item for a UITableViewCell
+public protocol ConciseBindableViewModelItem {
+    /// The View type (or base type) associated with this VIew Model Item
+    associatedtype View: ConciseBindableView where View.Element == Self
+    
+    /// returns the view type to be used for a specific element. By default this will return the associated type's type.
+    ///
+    ///  override this when you need to associate multiple bindable views with a single list of ViewModelItems.
+    ///
+    /// - Parameter element: the element to return the
+    ///
+    static func bindableViewTypeFor(_ element: Self) -> View.Type
+}
+
+extension ConciseBindableViewModelItem {
+    public static func bindableViewTypeFor(_ element: Self) -> View.Type {
+        return View.self
+    }
+}
+
 // Most of this is related to SwiftUI support for view models...
 
 /// Subscribes to all Vars in a class (including those wrapped in propertywrappers) and forwards any change to ObservableObject Publishers.
