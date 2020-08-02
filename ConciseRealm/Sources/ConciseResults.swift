@@ -63,6 +63,10 @@ extension Results {
     /// returns results ad an observable concise array
     /// - Parameter preload: if true, the concise array  synchronously gets the inital value of the query. Otherwise the initial array will be empty and results will be queried on a background thread. (default: false)
     public func asConciseArray(preload: Bool = false) -> ConciseArray<Element> {
+        guard DependencyGroup.current == nil else {
+            fatalError("Perfoming Realm queries in an expression is not supported")
+        }
+        
         return ObservableResultsArray(self, preload: preload)
     }
 }
