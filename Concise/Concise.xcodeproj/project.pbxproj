@@ -29,6 +29,8 @@
 		E5FF1B4D2409865B00EA3056 /* CombineSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B4C2409865B00EA3056 /* CombineSupport.swift */; };
 		E5FF1B502409873100EA3056 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B4F2409873100EA3056 /* Bindable.swift */; };
 		E5FF1B5224098C2000EA3056 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF1B5124098C2000EA3056 /* ViewModel.swift */; };
+		F039407624D65416003F5BA9 /* JoinConciseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039407524D65416003F5BA9 /* JoinConciseArray.swift */; };
+		F039407C24D67ACD003F5BA9 /* JoinConciseArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039407B24D67ACD003F5BA9 /* JoinConciseArrayTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		E5FF1B4C2409865B00EA3056 /* CombineSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineSupport.swift; sourceTree = "<group>"; };
 		E5FF1B4F2409873100EA3056 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		E5FF1B5124098C2000EA3056 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F039407524D65416003F5BA9 /* JoinConciseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinConciseArray.swift; sourceTree = "<group>"; };
+		F039407B24D67ACD003F5BA9 /* JoinConciseArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinConciseArrayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 				E53966A723FC5AAD00F59ED5 /* Info.plist */,
 				E59F4A632400955400A622DA /* MutableVarTests.swift */,
 				E59F4A6524009A9B00A622DA /* ExprTests.swift */,
+				F039407B24D67ACD003F5BA9 /* JoinConciseArrayTests.swift */,
 			);
 			path = ConciseTests;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				E5FF1B402408608500EA3056 /* ConciseArray.swift */,
 				E5FF1B42240860A800EA3056 /* MutableConciseArray.swift */,
 				E5FF1B44240860D200EA3056 /* MapConciseArray.swift */,
+				F039407524D65416003F5BA9 /* JoinConciseArray.swift */,
 			);
 			path = ConciseArray;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				E53966CC23FC5FA200F59ED5 /* Domain.swift in Sources */,
 				E5FF1B5224098C2000EA3056 /* ViewModel.swift in Sources */,
 				E5FF1B4D2409865B00EA3056 /* CombineSupport.swift in Sources */,
+				F039407624D65416003F5BA9 /* JoinConciseArray.swift in Sources */,
 				E5FF1B45240860D200EA3056 /* MapConciseArray.swift in Sources */,
 				E53966DC23FCB64D00F59ED5 /* MutableVar.swift in Sources */,
 				E53966D823FCAAE400F59ED5 /* Var.swift in Sources */,
@@ -296,6 +303,7 @@
 			files = (
 				E59F4A6624009A9B00A622DA /* ExprTests.swift in Sources */,
 				E59F4A642400955400A622DA /* MutableVarTests.swift in Sources */,
+				F039407C24D67ACD003F5BA9 /* JoinConciseArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

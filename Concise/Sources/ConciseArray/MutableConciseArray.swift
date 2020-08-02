@@ -32,7 +32,7 @@ public class MutableConciseArray<Element>: ConciseArray<Element> {
         
         _futureItems = nil
         
-        let changes = items.difference(from: self.oldItems, by: _isEqual).asConciseArrayChange()
+        let changes = futureItems.difference(from: self.oldItems, by: _isEqual).asConciseArrayChange()
         
         if changes.count == 0 {
             return false
@@ -41,6 +41,12 @@ public class MutableConciseArray<Element>: ConciseArray<Element> {
         setItems(futureItems, changes: changes)
                 
         return true
+    }
+}
+
+extension MutableConciseArray where Element: Identifiable {
+    public convenience init(_ items: [Element]) {
+        self.init(items, isEqual: { $0.id == $1.id })
     }
 }
 

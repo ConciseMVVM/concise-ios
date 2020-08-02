@@ -35,7 +35,7 @@ open class ConciseArray<Element>: AbstractVar {
         
         self._oldItems = self.items
         self._items = newItems
-        self._changes = changes // if nil, will be calculated the first time they are requested.
+        self._changes = changes 
         
         // Once we are done with this update, we clear _oldItems and _changes...
         // These values are only available while subscriptions are firing...

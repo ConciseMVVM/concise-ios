@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ConciseArrayChange {
+public enum ConciseArrayChange: Equatable {
     case insert(offset: Int)
     case remove(offset: Int)
 }

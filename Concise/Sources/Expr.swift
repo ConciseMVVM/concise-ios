@@ -28,7 +28,7 @@ public class Expr<VarType: Equatable>: Var<VarType> {
             var dict: [Int64: Dependency] = [:]
             
             for dep in dependencies {
-                dict[dep.observable.varId] = dep
+                dict[dep.observable.id] = dep
             }
             
             return dict
@@ -42,22 +42,22 @@ public class Expr<VarType: Equatable>: Var<VarType> {
         var newVars: [Int64: AbstractVar] = [:]
         
         for v in vars {
-            newVars[v.varId] = v
+            newVars[v.id] = v
         }
         
         // first add any new Dependencies...
         
         for v in newVars.values {
-            if dependencies[v.varId] == nil {
-                dependencies[v.varId] = Dependency(expr: self, observable: v)
+            if dependencies[v.id] == nil {
+                dependencies[v.id] = Dependency(expr: self, observable: v)
             }
         }
         
         // now remove deleted dependencies...
         
         for d in dependencies.values {
-            if newVars[d.observable.varId] == nil {
-                dependencies.removeValue(forKey: d.observable.varId)
+            if newVars[d.observable.id] == nil {
+                dependencies.removeValue(forKey: d.observable.id)
             }
         }
     }
