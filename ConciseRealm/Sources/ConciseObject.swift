@@ -72,3 +72,23 @@ open class ConciseObject: Object {
     }
 }
 
+// the obvious thing to do here would be to add this method directly to the ConciseObject class but
+// due to the weirdness of how swifts deals with Self it needs to be in a protocol extension...
+
+public protocol ConciseObjectQueryObjects {
+}
+
+extension ConciseObjectQueryObjects where Self: ConciseObject {
+    
+    /// performs the query q on all objects of the given type on the default realm, returning the results as a ConciseArray
+    /// - Parameter q: the query to run. the parameter, objects, is all the objects realm has. the results will be wrapped in the concise array
+    /// - Returns: a ConciseArray subscribed to the query
+    public static func query(_ q: (_ objects: Results<Self>) -> Results<Self>) -> ConciseArray<Self> {
+        return try! withRealm { (realm) -> Results<Self> in
+            return q(realm.objects(Self.self))
+        }.asConciseArray()
+    }
+}
+
+extension ConciseObject: ConciseObjectQueryObjects {
+}
