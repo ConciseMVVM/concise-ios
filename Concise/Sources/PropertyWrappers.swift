@@ -8,12 +8,26 @@
 
 import Foundation
 
-public func *= <VarType>(lhs: inout ExprProp<VarType>, rhs: @escaping () -> VarType) where VarType: Equatable {
-    lhs.expr = Expr(rhs)
+public func *= <VarType>(lhs: inout VarProp<VarType>, rhs: @escaping () -> VarType) where VarType: Equatable {
+    lhs.wrapped = Expr(rhs)
 }
 
-public func *= <VarType>(lhs: inout ExprProp<VarType?>, rhs: @escaping () -> VarType) where VarType: Equatable {
-    lhs.expr = Expr(rhs)
+public func *= <VarType>(lhs: inout VarProp<VarType?>, rhs: @escaping () -> VarType) where VarType: Equatable {
+    lhs.wrapped = Expr(rhs)
+}
+
+public func *= <VarType>(lhs: inout VarProp<VarType>, rhs: Var<VarType>) {
+    // we should be able to do "lhs.var = rhs" but the compiler won't let us???
+    lhs.wrapped = Expr({ rhs.value })
+}
+
+public func *= <VarType>(lhs: inout VarProp<VarType?>, rhs: Var<VarType>) {
+    // we should be able to do "lhs.var = rhs" but the compiler won't let us???
+    lhs.wrapped = Expr({ rhs.value })
+}
+
+public func *= <Element>(lhs: inout ArrayProp<Element>, rhs: ConciseArray<Element>) {
+    lhs.wrapped = rhs
 }
 
 public protocol AbstractVarPropertyWrapper {
@@ -21,89 +35,85 @@ public protocol AbstractVarPropertyWrapper {
 }
 
 @propertyWrapper
-public struct ExprProp<VarType> where VarType: Equatable {
-    public var expr: Expr<VarType>?
+public struct VarProp<VarType> where VarType: Equatable {
+    public var wrapped: Expr<VarType>?
     
     public var wrappedValue: VarType {
-        guard let expr = self.expr else {
-            fatalError("attempt to use ExprProp that has not been initialized")
+        guard let wrapped = self.wrapped else {
+            fatalError("attempt to use VarProp that has not been initialized")
         }
         
-        return expr.value
+        return wrapped.value
     }
     
-    public var projectedValue: Expr<VarType> {
-        guard let expr = self.expr else {
-            fatalError("attempt to call ExprProp that has not been initialized")
+    public var projectedValue: Var<VarType> {
+        guard let wrapped = self.wrapped else {
+            fatalError("attempt to call VarProp that has not been initialized")
         }
         
-        return expr
+        return wrapped
     }
 
     public init() {
     }
 }
 
-extension ExprProp: AbstractVarPropertyWrapper {
-    public var abstractVar: AbstractVar? { return self.expr }
+extension VarProp: AbstractVarPropertyWrapper {
+    public var abstractVar: AbstractVar? { return self.wrapped }
 }
 
 @propertyWrapper
 public struct MutableProp<VarType: Equatable> {
-    public let mutable: MutableVar<VarType>
+    public let wrapped: MutableVar<VarType>
     
     public var wrappedValue: VarType {
-        get { return mutable.value }
-        set { mutable.futureValue = newValue }
+        get { return wrapped.value }
+        set { wrapped.futureValue = newValue }
     }
     
-    public var projectedValue: MutableVar<VarType> { mutable }
+    public var projectedValue: MutableVar<VarType> { wrapped }
 
     public init(wrappedValue: VarType) {
-        mutable = MutableVar(wrappedValue)
+        wrapped = MutableVar(wrappedValue)
     }
 }
 
 extension MutableProp: AbstractVarPropertyWrapper {
-    public var abstractVar: AbstractVar? { return self.mutable }
+    public var abstractVar: AbstractVar? { return self.wrapped }
 }
 
 @propertyWrapper
 public struct ArrayProp<Element> {
-    public var array: ConciseArray<Element>!
+    public var wrapped: ConciseArray<Element>!
     
-    public var wrappedValue: [Element] { array.items }
-    public var projectedValue: ConciseArray<Element> { array }
+    public var wrappedValue: [Element] { wrapped.items }
+    public var projectedValue: ConciseArray<Element> { wrapped }
     
     public init() {
     }
 }
 
 extension ArrayProp: AbstractVarPropertyWrapper {
-    public var abstractVar: AbstractVar? { return self.array }
-}
-
-public func *= <Element>(lhs: inout ArrayProp<Element>, rhs: ConciseArray<Element>) {
-    lhs.array = rhs
+    public var abstractVar: AbstractVar? { return self.wrapped }
 }
 
 @propertyWrapper
 public struct MutableArrayProp<Element: Equatable> {
-    private var array: MutableConciseArray<Element>
+    private var wrapped: MutableConciseArray<Element>
     
     public var wrappedValue: [Element] {
-        get { return array.items }
-        set { array.futureItems = newValue }
+        get { return wrapped.items }
+        set { wrapped.futureItems = newValue }
     }
     
-    public var projectedValue: MutableConciseArray<Element> { array }
+    public var projectedValue: MutableConciseArray<Element> { wrapped }
     
     public init(_ items: [Element] = []) {
-        self.array = MutableConciseArray(items)
+        self.wrapped = MutableConciseArray(items)
     }
 }
 
 extension MutableArrayProp: AbstractVarPropertyWrapper {
-    public var abstractVar: AbstractVar? { return self.array }
+    public var abstractVar: AbstractVar? { return self.wrapped }
 }
 
