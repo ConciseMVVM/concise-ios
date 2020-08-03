@@ -20,3 +20,6 @@ public func *= <Observer, Type>(lhs: Observer, rhs: @escaping () -> Type) where 
     DisposeBag.captureDisposable(expr.bind(to: lhs))
 }
 
+public func *= <Observer, Type>(lhs: Observer, rhs: Var<Type>) where Type: Equatable, Observer: ObserverType, Observer.Element == Type {
+    DisposeBag.captureDisposable(rhs.bind(to: lhs))
+}
