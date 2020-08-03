@@ -83,10 +83,19 @@ extension ConciseObjectQueryObjects where Self: ConciseObject {
     /// performs the query q on all objects of the given type on the default realm, returning the results as a ConciseArray
     /// - Parameter q: the query to run. the parameter, objects, is all the objects realm has. the results will be wrapped in the concise array
     /// - Returns: a ConciseArray subscribed to the query
-    public static func query(_ q: (_ objects: Results<Self>) -> Results<Self>) -> ConciseArray<Self> {
+    public static func conciseQuery(_ q: (_ objects: Results<Self>) -> Results<Self>) -> ConciseArray<Self> {
         return try! withRealm { (realm) -> Results<Self> in
             return q(realm.objects(Self.self))
         }.asConciseArray()
+    }
+    
+    /// performs the query q on all objects of the given type on the default realm, returning the count of the results as an observable value
+    /// - Parameter q: the query to run. the parameter, objects, is all the objects realm has. the results will be wrapped in the concise array
+    /// - Returns: a Var subscribed to the query count
+    public static func conciseCount(_ q: (_ objects: Results<Self>) -> Results<Self>) -> Var<Int> {
+        return try! withRealm { (realm) -> Results<Self> in
+            return q(realm.objects(Self.self))
+        }.asConciseCount()
     }
 }
 
